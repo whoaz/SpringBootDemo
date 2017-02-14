@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>用户注册</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h3 class="center">用户注册</h3>
+<h4 th:text="${msg}"></h4>
+<form method="post" th:action="@{/user/save}" th:object="${user}">
+    <input type="hidden" th:field="*{id}" name="id"/>
+    <div class="input-group">
+        <label class="control-label">姓名:</label>
+        <div class="controls">
+            <input type="text" th:field="*{name}" class="form-control" placeholder="请输入用户名"/>
+        </div>
+    </div>
+    <div class="input-group">
+        <label class="control-label">年龄:</label>
+        <div class="controls">
+            <input type="text" th:field="*{age}" class="form-control" placeholder="请输入年龄"/>
+        </div>
+    </div>
+    <div class="input-group">
+        <input type="submit" class="btn" value="保存"/>
+    </div>
+
+</form>
+
+<a href="list.html" th:href="@{/user/list}">返回</a>
+</body>
+</html>

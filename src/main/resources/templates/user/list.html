@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>用户列表</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h4 th:text="${msg}"></h4>
+    <table class="table">
+        <tr>
+            <td>id</td>
+            <td>用户名</td>
+            <td>年龄</td>
+            <td>注册时间</td>
+            <td>操作</td>
+
+        </tr>
+        <tr th:each="user:${users}">
+            <td th:text="${user.id}">1</td>
+            <td th:text="${user.name}">Mr.Zhou</td>
+            <td th:text="${user.age}">18</td>
+            <td th:text="${#dates.format(user.createAt, 'yyyy/MM/dd HH:mm:ss')}">2017-02-14</td>
+            <td>
+                <a th:href="@{/user/form(id=${user.id})}">编辑</a>
+                <a th:href="@{/user/delete(id=${user.id})}">删除</a>
+            </td>
+        </tr>
+    </table>
+    <a th:href="@{/user/form}">添加</a>
+</body>
+</html>
